@@ -1,31 +1,8 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import './App.css'
+import './ShowSubscriber.css'
 
-
-class App extends Component {
-
-  constructor(){
-    super();
-    this.state = {
-      subscribersListToShow: [
-        {
-          id: 1,
-          name: "Harsh Naidu",
-          phone: "8888888888"
-        },
-        {
-          id: 2,
-          name: "Shilpa Bhat",
-          phone: "9999999999"
-        },
-          
-      ]
-    }
-  }
-
-  render() {
-    // let subscribers = [
+// let subscribers = [
     //   {
     //     id: 1,
     //     name: "Harsh Naidu",
@@ -38,8 +15,11 @@ class App extends Component {
     //   },
     // ]
 
+class ShowSubscribers extends Component {
+
+  render() {
     return (
-      <div>
+      <div className="component-container">
         <Header heading="Phone Directory"/>
         <div className="component-body-container">
           <button className="custom-btn add-btn">Add</button>
@@ -50,16 +30,14 @@ class App extends Component {
           </div>
 
           {
-            this.state.subscribersListToShow.map(sub => {
-              return (
-                <div key={sub.id} className="grid-container">
+            this.props.subscribersList.map(sub => {
+              return <div key={sub.id} className="grid-container">
                   <span className="grid-item">{sub.name}</span>
                   <span className="grid-item">{sub.phone}</span>
                   <span className="grid-item action-btn-container">
                     <button className="custom-btn delete-btn">Delete</button>
                   </span>
                 </div>
-              )
             })
           }
         </div>
@@ -68,4 +46,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ShowSubscribers;
